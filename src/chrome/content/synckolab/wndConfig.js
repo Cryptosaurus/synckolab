@@ -437,7 +437,7 @@ synckolab.settings.init = function () {
 		tItem.setAttribute("primary", "true");
 		tRow = document.createElement("treecols");
 		tRow.appendChild(tItem);
-		tree.appendChild(tRow)
+		tree.appendChild(tRow);
 		
 		ctree = document.createElement("treechildren");
 		tree.appendChild(ctree);

@@ -1157,7 +1157,7 @@ synckolab.calendarTools.getTimezoneService = function() {
 			getTimezone: function(tzid) { return {tzid: tzid}; }
 		};
 	return Components.classes["@mozilla.org/calendar/timezone-service;1"].getService(Components.interfaces.calITimezoneService);
-}
+};
 
 /**
  * get the lightning timezone object from a string
@@ -1179,7 +1179,7 @@ synckolab.calendarTools.getTimezone = function(tzid) {
 		return synckolab.calendarTools.getTimezoneService().UTC;
 	}
 	return synckolab.calendarTools.getTimezoneService().getTimezone(tzid);
-}
+};
 
 synckolab.calendarTools.tzidCache = {};
 
@@ -1217,7 +1217,7 @@ synckolab.calendarTools.getTimezoneId = function(tzid) {
 	// update cache
 	synckolab.calendarTools.tzidCache[tzid] = realtzId;
 	return realtzId;
-}
+};
 
 /**
  * parse a string containing a Kolab XML message and put the information
@@ -2239,7 +2239,7 @@ synckolab.calendarTools.json2kolab3 = function (jobj, syncTasks, email) {
 			if(jobj.endDate.tz) {
 				xml += "  <parameters><tzid><text>/kolab.org/" + jobj.endDate.tz + "</text></tzid></parameters>\n";
 			}
-			xml += "  <date-time>" + jobj.endDate.dateTime  + "</date-time>\n"
+			xml += "  <date-time>" + jobj.endDate.dateTime  + "</date-time>\n";
 			xml += " </dtend>\n";
 		}
 		
@@ -2260,7 +2260,7 @@ synckolab.calendarTools.json2kolab3 = function (jobj, syncTasks, email) {
 			if(jobj.endDate.tz) {
 				xml += "  <parameters><tzid><text>/kolab.org/" + jobj.endDate.tz + "</text></tzid></parameters>\n";
 			}
-			xml += "  <date-time>" + jobj.endDate.dateTime  + "</date-time>\n"
+			xml += "  <date-time>" + jobj.endDate.dateTime  + "</date-time>\n";
 			xml += " </dtend>\n";
 		}
 	}
@@ -2553,4 +2553,4 @@ synckolab.calendarTools.fixTaskObj = function(task) {
 	} else if (task.completed < 0 || !task.completed) {
 		task.completed = 0;
 	}
-}
+};

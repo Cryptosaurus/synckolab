@@ -669,7 +669,7 @@ synckolab.Calendar = {
 				tmpEventObj = synckolab.calendarTools.json2event(newEvent, this.gConfig.calendar);
 
 				// update the newEvent timestamp so it wont display a window
-				lastAckTime = synckolab.tools.text.setCalByJsDate(null, new Date());
+				var lastAckTime = synckolab.tools.text.setCalByJsDate(null, new Date());
 				tmpEventObj.alarmLastAck = lastAckTime;
 
 				// if we dont have a timezone - set it based on the ack object (=current timezone)

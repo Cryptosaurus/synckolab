@@ -45,4 +45,4 @@ synckolab.newconfig = {
 			return false;
 		}
 	}
-}
+};

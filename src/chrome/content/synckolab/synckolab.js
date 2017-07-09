@@ -1276,7 +1276,7 @@ synckolab.main.removeImapMessages = function(uid, config, onFinish) {
 	}
 	config.folder.deleteMessages(list, msgWindow, true, false, null, true);
 	onFinish();
-}
+};
 
 /* Write all changed messages back to the folder. Skip
  * the messages which were to be deleted from the server.
