@@ -371,13 +371,21 @@ synckolab.tools.text = {
 		if(calDateTime.isMutable === false) {
 			calDateTime = calDateTime.clone();
 		} 
-		
-		calDateTime.year = jsDate.year;
-		calDateTime.month = jsDate.month;
-		calDateTime.day = jsDate.day;
-		calDateTime.hour = jsDate.hour;
-		calDateTime.minute = jsDate.minute;
-		calDateTime.second = jsDate.second;
+		if (jsDate.year) {
+			calDateTime.year = jsDate.year;
+			calDateTime.month = jsDate.month;
+			calDateTime.day = jsDate.day;
+			calDateTime.hour = jsDate.hour;
+			calDateTime.minute = jsDate.minute;
+			calDateTime.second = jsDate.second;
+		} else {
+			calDateTime.year = jsDate.getFullYear();
+			calDateTime.month = jsDate.getMonth();
+			calDateTime.day = jsDate.getDate();
+			calDateTime.hour = jsDate.getHours();
+			calDateTime.minute = jsDate.getMinutes();
+			calDateTime.second = jsDate.getSeconds();
+		}
 		return calDateTime;
 	},
 	
