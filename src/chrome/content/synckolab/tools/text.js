@@ -379,12 +379,12 @@ synckolab.tools.text = {
 			calDateTime.minute = jsDate.minute;
 			calDateTime.second = jsDate.second;
 		} else {
-			calDateTime.year = jsDate.getFullYear();
-			calDateTime.month = jsDate.getMonth();
-			calDateTime.day = jsDate.getDate();
-			calDateTime.hour = jsDate.getHours();
-			calDateTime.minute = jsDate.getMinutes();
-			calDateTime.second = jsDate.getSeconds();
+			calDateTime.year = jsDate.getUTCFullYear();
+			calDateTime.month = jsDate.getUTCMonth();
+			calDateTime.day = jsDate.getUTCDate();
+			calDateTime.hour = jsDate.getUTCHours();
+			calDateTime.minute = jsDate.getUTCMinutes();
+			calDateTime.second = jsDate.getUTCSeconds();
 		}
 		return calDateTime;
 	},
