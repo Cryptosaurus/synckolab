@@ -1391,7 +1391,7 @@ synckolab.calendarTools.xml2json = function (xml, syncTasks)
 				}
 				s = cur.getFirstData();
 				jobj.startDate = {
-					tz: synckolab.calendarTools.getTimezoneId(cur.getXmlResult(["parameters","tzid","text"], null)),
+					tz: s.indexOf("Z") === -1? synckolab.calendarTools.getTimezoneId(null): synckolab.calendarTools.getTimezoneService().UTC.tzid,
 					allday: s.indexOf("T") === -1,
 					dateTime: s
 				};
@@ -1416,7 +1416,7 @@ synckolab.calendarTools.xml2json = function (xml, syncTasks)
 				}
 				s = cur.getFirstData();
 				jobj.endDate = {
-						tz: synckolab.calendarTools.getTimezoneId(cur.getXmlResult(["parameters","tzid","text"], null)),
+						tz: s.indexOf("Z") === -1? synckolab.calendarTools.getTimezoneId(null): synckolab.calendarTools.getTimezoneService().UTC.tzid,
 						allday: s.indexOf("T") === -1,
 						dateTime: s
 				};
@@ -2010,17 +2010,17 @@ synckolab.calendarTools.json2xml = function (jobj, syncTasks, email) {
 		xml += synckolab.tools.text.nodeWithContent("status", jobj.status, false);
 		xml += synckolab.tools.text.nodeWithContent("completed", jobj.completed, false);
 		if(jobj.startDate) {
-			xml += synckolab.tools.text.nodeWithContent("start-date", jobj.startDate.dateTime, false);
+			xml += synckolab.tools.text.nodeWithContent("start-date", synckolab.tools.text.string2UTC(jobj.startDate), false);
 		}
 		if(jobj.endDate) {
-			xml += synckolab.tools.text.nodeWithContent("due-date", jobj.endDate.dateTime, false);
+			xml += synckolab.tools.text.nodeWithContent("due-date", synckolab.tools.text.string2UTC(jobj.endDate), false);
 		}
 		// xml += " <completed-date>" + synckolab.tools.text.calDateTime2String(completedDate, true, false) + "</completed-date>\n";
 	}
 	else
 	{
-		xml += synckolab.tools.text.nodeWithContent("start-date", jobj.startDate.dateTime, false);
-		xml += synckolab.tools.text.nodeWithContent("end-date", jobj.endDate.dateTime, false);
+		xml += synckolab.tools.text.nodeWithContent("start-date", synckolab.tools.text.string2UTC(jobj.startDate), false);
+		xml += synckolab.tools.text.nodeWithContent("end-date", synckolab.tools.text.string2UTC(jobj.endDate), false);
 	}
 
 	xml += synckolab.tools.text.nodeWithContent("priority", jobj.priority, false);

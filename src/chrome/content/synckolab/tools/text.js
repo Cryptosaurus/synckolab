@@ -513,6 +513,17 @@ synckolab.tools.text = {
 		return resultstring;
 	},
 
+	// Convert date to UTC
+	string2UTC : function (val) {
+		if (!val.tz || val.allday) {
+			return val.dateTime;
+		} else {
+			var cDate = synckolab.tools.text.string2CalDateTime(val);
+			cDate = cDate.getInTimezone(synckolab.calendarTools.getTimezoneService().UTC);
+			return synckolab.tools.text.calDateTime2String(cDate, false)+'Z';
+		}
+	},
+
 	// Create a duration object for an alarm time
 	createDuration : function (minutes) {
 		var duration = Components.classes["@mozilla.org/calendar/duration;1"].createInstance(Components.interfaces.calIDuration);
